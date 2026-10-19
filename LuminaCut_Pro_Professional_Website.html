@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LuminaCut Pro — Video & Photo Editing</title>
+<meta name="description" content="Meet LuminaCut Pro: a modern video and photo editing workspace. Edit online or download the Android APK directly.">
+<meta name="theme-color" content="#08080c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LuminaCut Pro — Video & Photo Editing">
+<meta property="og:description" content="A modern video and photo editing workspace. Edit online or download the LuminaCut Pro Android APK.">
+<!-- Add <link rel="canonical"> and og:url here only once the final official domain is confirmed. -->
+<style>
+:root{--bg:#08080c;--bg2:#101016;--card:#14141c;--line:#262633;--txt:#f4f4f8;--mut:#a3a3b5;--v:#8b5cf6;--b:#3b82f6;--grad:linear-gradient(135deg,#8b5cf6,#3b82f6);--r:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--txt);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid #a78bfa;outline-offset:3px;border-radius:8px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+section{padding:80px 0}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,6.5vw,4.2rem);font-weight:800}
+h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:750;margin-bottom:12px}
+h3{font-size:1.15rem;font-weight:650}
+.lead{color:var(--mut);font-size:1.1rem;max-width:58ch}
+.head{margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--txt);font:600 1rem system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:#4a4a63}
+.btn.pri{background:var(--grad);border-color:transparent}
+.btn.pri:hover{filter:brightness(1.1)}
+.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;transform:none;pointer-events:none}
+.btn svg{width:18px;height:18px;flex:none}
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(8,8,12,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:750;text-decoration:none}
+.logo svg{width:30px;height:30px}
+.links{display:flex;align-items:center;gap:6px;list-style:none}
+.links a:not(.btn){display:block;padding:12px 14px;color:var(--mut);text-decoration:none;border-radius:10px}
+.links a:not(.btn):hover{color:var(--txt)}
+.links .btn{min-height:44px;padding:0 20px}
+.menu{display:none;width:48px;height:48px;border:1px solid var(--line);border-radius:12px;background:none;color:var(--txt);cursor:pointer}
+.menu svg{width:22px;height:22px}
+@media(max-width:820px){
+.menu{display:grid;place-items:center}
+.links{display:none;position:absolute;left:0;right:0;top:68px;flex-direction:column;align-items:stretch;padding:12px 20px 20px;background:var(--bg2);border-bottom:1px solid var(--line)}
+.links.open{display:flex}
+.links a:not(.btn){padding:14px}
+}
+/* hero */
+.hero{padding:72px 0 40px;background:radial-gradient(700px 360px at 80% -5%,rgba(139,92,246,.22),transparent),radial-gradient(500px 300px at 5% 10%,rgba(59,130,246,.12),transparent)}
+.hero .copy{max-width:760px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{margin:20px 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.note{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:.9rem;color:var(--mut)}
+.dot{width:8px;height:8px;border-radius:50%;background:#34d399}
+/* mockup */
+.mock{margin-top:56px;border:1px solid var(--line);border-radius:20px;background:var(--bg2);padding:14px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.mock .bar{display:flex;gap:6px;margin-bottom:12px}
+.mock .bar i{width:10px;height:10px;border-radius:50%;background:#2e2e3d}
+.ws{display:grid;grid-template-columns:150px 1fr 150px;gap:12px}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;min-width:0}
+.thumbs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.th{aspect-ratio:16/10;border-radius:6px}
+.t1{background:linear-gradient(135deg,#6d28d9,#1d4ed8)}.t2{background:linear-gradient(135deg,#0ea5e9,#312e81)}.t3{background:linear-gradient(135deg,#c026d3,#4338ca)}.t4{background:linear-gradient(135deg,#334155,#6d28d9)}
+.mon{display:grid;place-items:center;aspect-ratio:16/9;border-radius:8px;background:linear-gradient(135deg,#2e1065,#172554 60%,#0b0b12);position:relative;overflow:hidden}
+.mon svg{width:46px;height:46px;opacity:.9}
+.ctl{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.ctl i{width:26px;height:26px;border-radius:50%;background:#222233}
+.ctl i:nth-child(2){background:var(--grad)}
+.sl{display:flex;flex-direction:column;gap:14px;padding-top:6px}
+.sl b{display:block;height:6px;border-radius:3px;background:#262633;position:relative}
+.sl b::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);border-radius:3px;background:var(--grad)}
+.tool{display:flex;gap:8px;margin:12px 0;overflow:hidden}
+.tool i{flex:none;width:34px;height:30px;border-radius:8px;background:#1b1b27;border:1px solid var(--line)}
+.tl{display:grid;gap:7px}
+.tr{height:30px;border-radius:7px;background:#0d0d14;border:1px solid var(--line);position:relative;overflow:hidden}
+.tr i{position:absolute;top:3px;bottom:3px;border-radius:5px;left:var(--l);width:var(--w);background:var(--c)}
+.ph{position:absolute;top:0;bottom:0;left:38%;width:2px;background:#fff;z-index:2;pointer-events:none}
+.tlw{position:relative}
+.cap{margin-top:12px;font-size:.82rem;color:var(--mut);text-align:center}
+@media(max-width:720px){.ws{grid-template-columns:1fr}.ws .pane:first-child,.ws .pane:last-child{display:none}}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:#4c3f8a;transform:translateY(-3px)}
+.ico{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;margin-bottom:16px;background:rgba(139,92,246,.14);color:#c4b5fd}
+.ico svg{width:22px;height:22px}
+.card p{color:var(--mut);margin-top:6px;font-size:.96rem}
+.feat-note{margin-top:20px;color:var(--mut);font-size:.88rem}
+/* two ways */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.big{padding:34px;border-radius:22px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.big.web{background:linear-gradient(160deg,rgba(139,92,246,.18),var(--card) 55%);border-color:#3d3270}
+.big p{color:var(--mut)}
+.big .btn{margin-top:auto}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;font-size:.85rem;font-weight:600;background:#1d1d29;border:1px solid var(--line);color:#fbbf24}
+.badge.ok{color:#34d399}
+.safety{font-size:.88rem;color:var(--mut);border-left:3px solid var(--v);padding-left:12px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding:26px;border-radius:var(--r);border:1px solid var(--line);background:var(--card)}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;margin-bottom:14px;border-radius:50%;background:var(--grad);font-weight:700}
+.steps p{color:var(--mut);margin-top:6px}
+/* faq */
+.faq{max-width:780px}
+.faq h3{font-size:1rem}
+.faq button{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;min-height:56px;padding:14px 4px;background:none;border:0;border-bottom:1px solid var(--line);color:var(--txt);font:600 1rem system-ui,sans-serif;text-align:left;cursor:pointer}
+.faq button svg{flex:none;width:20px;height:20px;transition:transform .2s}
+.faq button[aria-expanded="true"] svg{transform:rotate(45deg)}
+.faq .a{color:var(--mut);padding:14px 4px 6px}
+.faq .a[hidden]{display:none}
+/* footer */
+footer{border-top:1px solid var(--line);padding:56px 0 32px;background:var(--bg2)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+.fg p{color:var(--mut);max-width:40ch;margin-top:12px;font-size:.94rem}
+.fg h3{font-size:.95rem;margin-bottom:10px}
+.fg ul{list-style:none}
+.fg li a,.fg li span{display:inline-block;padding:7px 0;color:var(--mut);text-decoration:none;font-size:.94rem}
+.fg li a:hover{color:var(--txt)}
+.copy-r{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);font-size:.86rem}
+@media(max-width:720px){.fg{grid-template-columns:1fr}section{padding:60px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* Premium visual refinement */
+:root{--bg:#070810;--bg2:#0b0d18;--card:rgba(18,21,38,.84);--line:rgba(167,178,220,.16);--txt:#f7f8ff;--mut:#a6acc4;--v:#9b7bff;--b:#52a7ff;--grad:linear-gradient(115deg,#a78bfa 0%,#6366f1 48%,#38bdf8 100%);--r:20px}
+body{background:radial-gradient(900px 520px at 90% 0%,rgba(80,65,190,.16),transparent 70%),radial-gradient(700px 450px at -10% 35%,rgba(28,130,200,.10),transparent 70%),var(--bg);letter-spacing:.005em}
+header{background:rgba(7,8,16,.78);border-bottom-color:rgba(167,178,220,.12)}
+.logo{letter-spacing:-.025em}.logo svg{filter:drop-shadow(0 5px 16px rgba(99,102,241,.28))}
+.links a:not(.btn){font-size:.94rem;transition:color .2s,background .2s}.links a:not(.btn):hover{background:rgba(255,255,255,.045)}
+.btn{min-height:50px;border-radius:14px;padding:0 22px;font-size:.95rem;letter-spacing:.005em;border-color:rgba(167,178,220,.22);transition:transform .22s,box-shadow .22s,border-color .22s,filter .22s}
+.btn.pri{background:var(--grad);box-shadow:0 8px 28px rgba(99,102,241,.22);color:#fff}.btn.pri:hover{box-shadow:0 12px 34px rgba(99,102,241,.32);filter:brightness(1.08)}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:100px 0 64px;background:radial-gradient(700px 440px at 83% 8%,rgba(124,92,255,.24),transparent 70%),radial-gradient(600px 360px at 15% 15%,rgba(56,189,248,.12),transparent 70%)}
+.hero:after{content:"";position:absolute;z-index:-1;right:-180px;top:30px;width:480px;height:480px;border:1px solid rgba(167,139,250,.12);border-radius:50%;box-shadow:0 0 0 45px rgba(167,139,250,.025),0 0 0 95px rgba(167,139,250,.018)}
+.hero .copy{max-width:800px}.hero h1{max-width:850px;font-size:clamp(2.6rem,7vw,5.2rem);line-height:1.02;letter-spacing:-.065em}.hero h1 span{background:linear-gradient(100deg,#c4b5fd,#818cf8 45%,#67e8f9);-webkit-background-clip:text;background-clip:text}
+.hero p.lead{max-width:60ch;font-size:clamp(1.02rem,2vw,1.2rem);line-height:1.8;margin:24px 0 32px}.cta{gap:14px}.note{padding:8px 12px;border:1px solid rgba(167,178,220,.13);border-radius:999px;background:rgba(12,15,28,.55)}.dot{box-shadow:0 0 12px rgba(52,211,153,.55)}
+.mock{position:relative;margin-top:64px;border-radius:24px;padding:16px;background:linear-gradient(145deg,rgba(28,31,53,.92),rgba(10,12,23,.96));border-color:rgba(167,178,220,.2);box-shadow:0 36px 100px rgba(0,0,0,.48),0 0 80px rgba(99,102,241,.08)}
+.pane,.card,.big,.steps li{border-color:rgba(167,178,220,.14)}.card{background:linear-gradient(150deg,rgba(22,25,44,.92),rgba(13,15,27,.92));padding:28px}.card:hover{border-color:rgba(167,139,250,.52);box-shadow:0 18px 45px rgba(0,0,0,.18)}.ico{background:linear-gradient(135deg,rgba(139,92,246,.2),rgba(56,189,248,.11));border:1px solid rgba(167,139,250,.12)}
+section{padding:92px 0}.head{max-width:720px;margin-bottom:36px}.head h2{letter-spacing:-.045em;font-size:clamp(1.9rem,4.5vw,2.8rem)}.head .lead{margin-top:12px;line-height:1.75}
+#download{background:linear-gradient(180deg,rgba(13,15,29,.94),rgba(7,8,16,.96))!important;border-block:1px solid rgba(167,178,220,.08)}.big{min-height:330px;padding:34px;background:linear-gradient(145deg,rgba(18,21,38,.96),rgba(10,12,22,.96));border-radius:24px;gap:18px}.big.web{background:radial-gradient(450px 240px at 0% 0%,rgba(99,102,241,.2),transparent 70%),linear-gradient(145deg,rgba(18,21,38,.96),rgba(10,12,22,.96));border-color:rgba(129,140,248,.32)}.big h3{font-size:1.45rem;letter-spacing:-.03em}.big p{line-height:1.75}.big .btn{margin-top:auto}.badge{background:rgba(255,255,255,.045);border-color:rgba(167,178,220,.15);padding:7px 12px;font-size:.8rem;letter-spacing:.02em}.badge.ok{color:#6ee7b7}
+.steps li{background:linear-gradient(145deg,rgba(18,21,38,.84),rgba(10,12,22,.9));border-radius:20px}.steps li::before{box-shadow:0 7px 20px rgba(99,102,241,.25)}.faq button{border-bottom-color:rgba(167,178,220,.13);padding-inline:8px}.faq .a{line-height:1.8;padding-inline:8px}
+footer{background:#080a13;border-top-color:rgba(167,178,220,.13)}.copy-r{border-top-color:rgba(167,178,220,.12)}
+@media(min-width:900px){.hero .copy{padding-top:12px}.hero .mock{max-width:1000px;margin-inline:auto}.two{gap:22px}}
+@media(max-width:720px){section{padding:68px 0}.hero{padding:72px 0 44px}.hero h1{font-size:clamp(2.55rem,12vw,4rem)}.mock{margin-top:42px;padding:10px;border-radius:18px}.big{min-height:unset;padding:26px}.cta .btn{flex:1 1 100%}.fg{gap:26px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#home" aria-label="LuminaCut Pro home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path d="M11 8v16l13-8z" fill="#fff"/></svg>
+      LuminaCut Pro
+    </a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#download">Download</a></li>
+      <li><a class="btn pri editor-link" href="https://luminacut.antideploy.app">Open Editor</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="copy">
+      <h1>Your Creativity. Your Timeline. <span>Your Rules.</span></h1>
+      <p class="lead">A fresh workspace for your next cut. Edit videos and photos in your browser, or install the LuminaCut Pro Android app with a single tap.</p>
+      <div class="cta">
+        <a class="btn pri editor-link" href="https://luminacut.antideploy.app">Start Editing Online</a>
+        <a class="btn" href="#download">↓ Download Android App</a>
+      </div>
+      <p class="note"><span class="dot" aria-hidden="true"></span>Web editor live <span aria-hidden="true">·</span> Android APK available</p>
+    </div>
+
+    <div class="mock" role="img" aria-label="Illustrative mockup of a video editing workspace with media bin, preview monitor, tools and a multi-track timeline">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="ws" aria-hidden="true">
+        <div class="pane"><div class="thumbs"><div class="th t1"></div><div class="th t2"></div><div class="th t3"></div><div class="th t4"></div></div></div>
+        <div class="pane">
+          <div class="mon"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.5"/><path d="M13 10v12l10-6z" fill="#fff"/></svg></div>
+          <div class="ctl"><i></i><i></i><i></i></div>
+        </div>
+        <div class="pane"><div class="sl"><b style="--w:70%"></b><b style="--w:40%"></b><b style="--w:85%"></b><b style="--w:55%"></b></div></div>
+      </div>
+      <div class="tool" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="tlw" aria-hidden="true">
+        <div class="ph"></div>
+        <div class="tl">
+          <div class="tr"><i style="--l:2%;--w:30%;--c:#6d28d9"></i><i style="--l:35%;--w:25%;--c:#1d4ed8"></i><i style="--l:63%;--w:30%;--c:#7c3aed"></i></div>
+          <div class="tr"><i style="--l:10%;--w:40%;--c:#0e7490"></i><i style="--l:55%;--w:35%;--c:#4338ca"></i></div>
+          <div class="tr"><i style="--l:5%;--w:20%;--c:#a21caf"></i><i style="--l:40%;--w:18%;--c:#a21caf"></i></div>
+          <div class="tr"><i style="--l:0%;--w:90%;--c:#334155"></i></div>
+        </div>
+      </div>
+      <p class="cap">Illustrative preview, not a screenshot and not a working editor.</p>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="head"><h2>Built for the way you create</h2><p class="lead">A focused set of tools for video and photo work, available in your browser.</p></div>
+    <div class="grid" id="featureGrid">
+      <!-- EDIT ME: each card is one feature. Remove or reword any card that doesn't match the editor. -->
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9v6l5-3z"/></svg></div><h3>Video editing</h3><p>Cut, arrange and refine your clips in one workspace.</p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></div><h3>Photo editing</h3><p>Work with still images alongside your video projects.</p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h12M3 12h18M3 17h9"/></svg></div><h3>Multi-track timeline</h3><p>Layer video, audio and more on a timeline you control.</p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></div><h3>Creative effects</h3><p>Add looks and adjustments to shape the mood of your work.</p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></svg></div><h3>Text and titles</h3><p>Place titles and captions over your footage.</p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><h3>Media management</h3><p>Add your files and keep them organized while you edit.</p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></div><h3>Export</h3><p>Save your finished project from the editor.</p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg></div><h3>Mobile-friendly</h3><p>Designed with phones and tablets in mind.</p></article>
+    </div>
+    <p class="feat-note">Feature availability may change as the editor develops. Open the editor to see what is available today.</p>
+  </div>
+</section>
+
+<section id="download" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="head"><h2>Your creative setup, your choice.</h2><p class="lead">Jump straight into the browser editor or download the Android installer directly.</p></div>
+    <div class="two">
+      <article class="big web">
+        <span class="badge ok"><span class="dot" aria-hidden="true"></span>Available now</span>
+        <h3>Edit directly in your browser</h3>
+        <p>No installation required to get started. Open the existing LuminaCut Pro web editor and begin working in your browser.</p>
+        <a class="btn pri editor-link" href="https://luminacut.antideploy.app">Open Web Editor</a>
+      </article>
+      <article class="big" id="androidCard">
+        <span class="badge ok" id="apkStatus">Android APK · Available</span>
+        <h3>LuminaCut Pro for Android</h3>
+        <p>Get LuminaCut Pro on your Android phone. Tap below to start downloading the APK installer.</p>
+        <p class="safety" id="apkSafety" hidden>Only install APK files from sources you trust. Android may ask you to allow installs from your browser.</p>
+        <a class="btn pri" id="apkBtn" href="https://drive.google.com/uc?export=download&amp;id=1Ox1P6i5J-pgLtPf4ABz0mm0BAMH6odho" aria-label="Download LuminaCut Pro Android APK">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>
+          <span id="apkLabel">Download APK</span>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="head"><h2>How it works</h2></div>
+    <ol class="steps">
+      <li><h3>Choose your platform</h3><p>Open the web editor or download the Android APK.</p></li>
+      <li><h3>Install or launch</h3><p>Open the APK after it downloads, or launch the editor in your browser.</p></li>
+      <li><h3>Start creating</h3><p>Add your media, build your timeline and edit your content.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="head"><h2>Frequently asked questions</h2></div>
+    <div class="faq" id="faqList">
+      <!-- EDIT ME: update answers as pricing, compatibility and support details are confirmed. -->
+      <h3><button type="button" aria-expanded="false" aria-controls="f1">Is LuminaCut Pro free?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+      <div class="a" id="f1" hidden>Pricing details haven't been announced on this page. Open the web editor to see what is currently offered.</div>
+      <h3><button type="button" aria-expanded="false" aria-controls="f2">Can I use LuminaCut Pro in my mobile browser?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+      <div class="a" id="f2" hidden>The editor is designed to be mobile-friendly. Performance depends on your device and browser, so open it and try it with your own media.</div>
+      <h3><button type="button" aria-expanded="false" aria-controls="f3">How do I download the Android APK?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+      <div class="a" id="f3" hidden>Yes. Use the Download APK button on this page. If Google Drive asks for confirmation, choose Download. The file must be shared as “Anyone with the link” for public access.</div>
+      <h3><button type="button" aria-expanded="false" aria-controls="f4">How do I download the Android version?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+      <div class="a" id="f4" hidden>Tap Download APK. When the file finishes downloading, open it and follow Android’s install prompts. Android may ask you to allow installs from your browser.</div>
+      <h3><button type="button" aria-expanded="false" aria-controls="f5">Does the editor require installation?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+      <div class="a" id="f5" hidden>The web editor opens in your browser, so you don't need to install anything to get started.</div>
+      <h3><button type="button" aria-expanded="false" aria-controls="f6">Which devices and browsers are supported?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+      <div class="a" id="f6" hidden>A full supported-device list hasn't been published. Compatibility depends on your device and browser, so we suggest using an up-to-date browser.</div>
+      <h3><button type="button" aria-expanded="false" aria-controls="f7">Where can I report a bug?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+      <div class="a" id="f7" hidden>A support contact will be listed in the footer once it's available. <span id="bugNote"></span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <a class="logo" href="#home" aria-label="LuminaCut Pro home">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="url(#lg)"/><path d="M11 8v16l13-8z" fill="#fff"/></svg>
+          LuminaCut Pro
+        </a>
+        <p>A modern creative workspace for video and photo editing on the web and Android.</p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <ul>
+          <li><a class="editor-link" href="https://luminacut.antideploy.app">Open Editor</a></li>
+          <li><a href="https://drive.google.com/uc?export=download&amp;id=1Ox1P6i5J-pgLtPf4ABz0mm0BAMH6odho" id="footApk">Download Android APK</a></li>
+          <li><a href="#features">Features</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Info</h3>
+        <ul id="infoLinks">
+          <!-- EDIT ME: set real URLs in LINKS (script below). Links without a URL show as "coming soon" text. -->
+          <li data-k="contact">Contact</li>
+          <li data-k="privacy">Privacy Policy</li>
+          <li data-k="terms">Terms of Use</li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy-r">© <span id="yr">2026</span> LuminaCut Pro. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* ============ CUSTOMIZE HERE ============ */
+// Paste your real direct APK download URL between the quotes (must start with https://).
+const APK_DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=1Ox1P6i5J-pgLtPf4ABz0mm0BAMH6odho";
+
+// Contact / policy links. Use a full https:// URL, or a mailto: link. Leave "" until they exist.
+const LINKS = {
+  contact: "",   // e.g. "mailto:you@example.com"
+  privacy: "",   // e.g. "https://yourdomain.com/privacy"
+  terms:   ""    // e.g. "https://yourdomain.com/terms"
+};
+/* ========================================= */
+
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+
+  // Year
+  var yr = $("#yr"); if (yr) yr.textContent = new Date().getFullYear();
+
+  // Mobile menu
+  var mb = $("#menuBtn"), nl = $("#navLinks");
+  function closeMenu() { if (nl && mb) { nl.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); } }
+  if (mb && nl) {
+    mb.addEventListener("click", function () {
+      var o = nl.classList.toggle("open");
+      mb.setAttribute("aria-expanded", String(o));
+    });
+    nl.addEventListener("click", function (e) { if (e.target.closest("a")) closeMenu(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeMenu(); mb.focus(); } });
+  }
+
+  // FAQ accordion
+  document.querySelectorAll(".faq button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var p = document.getElementById(b.getAttribute("aria-controls"));
+      var open = b.getAttribute("aria-expanded") === "true";
+      b.setAttribute("aria-expanded", String(!open));
+      if (p) p.hidden = open;
+    });
+  });
+
+  // Valid URL check: empty or non-https strings are never treated as a download.
+  function validUrl(u) {
+    if (typeof u !== "string") return false;
+    u = u.trim();
+    if (!/^https:\/\//i.test(u)) return false;
+    try { var x = new URL(u); return !!x.hostname && x.hostname.indexOf(".") > 0 && !/example\.(com|org)|your-?domain|placeholder/i.test(x.hostname); }
+    catch (e) { return false; }
+  }
+
+  // APK state
+  var btn = $("#apkBtn"), lab = $("#apkLabel"), st = $("#apkStatus"), sf = $("#apkSafety"), fa = $("#footApk");
+  if (validUrl(APK_DOWNLOAD_URL)) {
+    if (btn) { btn.href = APK_DOWNLOAD_URL.trim(); btn.setAttribute("download", btn.getAttribute("download") || ""); btn.setAttribute("rel", "noopener noreferrer"); btn.removeAttribute("aria-disabled"); }
+    if (lab) lab.textContent = "Download APK";
+    if (st) { st.textContent = "Available for Android"; st.classList.add("ok"); }
+    if (sf) sf.hidden = false;
+    if (fa) { fa.textContent = "Android: Download APK"; fa.href = APK_DOWNLOAD_URL.trim(); fa.setAttribute("download", ""); fa.setAttribute("rel", "noopener noreferrer"); }
+  } else {
+    if (st) { st.textContent = "APK Coming Soon"; st.classList.remove("ok"); }
+    if (lab) lab.textContent = "APK Coming Soon";
+    if (btn) {
+      btn.setAttribute("aria-disabled", "true");
+      btn.setAttribute("tabindex", "-1");
+      btn.href = "#download";
+      btn.addEventListener("click", function (e) { e.preventDefault(); });
+    }
+    if (fa) { fa.textContent = "Android: APK Coming Soon"; fa.href = "#download"; fa.removeAttribute("download"); }
+  }
+
+  // Contact / policy links (only real URLs become links)
+  document.querySelectorAll("#infoLinks li").forEach(function (li) {
+    var u = (LINKS[li.getAttribute("data-k")] || "").trim();
+    var ok = /^(https:\/\/|mailto:)/i.test(u);
+    var label = li.textContent;
+    li.textContent = "";
+    if (ok) {
+      var a = document.createElement("a"); a.href = u; a.textContent = label;
+      if (/^https/i.test(u)) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+      li.appendChild(a);
+    } else {
+      var s = document.createElement("span"); s.textContent = label + " (coming soon)"; li.appendChild(s);
+    }
+  });
+
+  // Bug report note uses the contact link when it exists
+  var bn = $("#bugNote"), c = (LINKS.contact || "").trim();
+  if (bn && /^(https:\/\/|mailto:)/i.test(c)) bn.innerHTML = '<a href="' + c.replace(/"/g, "&quot;") + '">Contact us</a>.';
+})();
+</script>
+
+</body>
+</html>
